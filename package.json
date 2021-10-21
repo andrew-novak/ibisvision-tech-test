@@ -2,10 +2,35 @@
   "name": "ibisvision-tech-test",
   "version": "1.0.0",
   "private": "true",
-  "scripts": {},
   "author": {
     "name": "Andrew Novak",
     "email": "contact@andrewnovak.co.uk"
   },
-  "license": "ISC"
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack serve --config ./config/webpack.config.babel.js",
+    "build": "cross-env NODE_ENV=production webpack --config ./config/webpack.config.babel.js"
+  },
+  "babel": {
+    "extends": "./config/babel.config.json"
+  },
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/register": "^7.15.3",
+    "babel-loader": "^8.2.3",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.4.0",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.4.0",
+    "style-loader": "^3.3.0",
+    "webpack": "^5.59.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  }
 }
