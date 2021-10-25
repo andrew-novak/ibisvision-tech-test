@@ -1,46 +1,46 @@
 import React, { useRef } from "react";
 
+import useBreakpoints from "../hooks/useBreakpoints";
 import useUserMedia from "../hooks/useUserMedia";
-import Root from "../components/Root";
-import Container from "../components/Container";
-import Card from "../components/Card";
+import CardTemplate from "../templates/CardTemplate";
 import Slider from "../components/Slider";
+import Button from "../components/Button";
 
+const SliderScreen = () => (
+  <CardTemplate title="Token: 43fdf">
+    <Slider />
+    <Slider />
+    <Button>NEXT</Button>
+  </CardTemplate>
+);
+
+/*
 const CAPTURE_OPTIONS = {
   audio: false,
   video: { facingMode: "environment" }
 };
 
-const SliderScreen = () => {
-  const videoRef = useRef();
-  const mediaStream = useUserMedia(CAPTURE_OPTIONS);
 
-  if (mediaStream && videoRef.current && !videoRef.current.srcObject) {
-    videoRef.current.srcObject = mediaStream;
-  }
+const videoRef = useRef();
+const mediaStream = useUserMedia(CAPTURE_OPTIONS);
 
-  const handleCanPlay = () => videoRef.current.play();
+if (mediaStream && videoRef.current && !videoRef.current.srcObject) {
+  videoRef.current.srcObject = mediaStream;
+}
 
-  return (
-    <Root sideMargin="10px">
-      <Card title="Token: 2fdsf3" maxWidth="840px">
-        <Container>
-          <Slider />
-          <video
-            ref={videoRef}
-            onCanPlay={handleCanPlay}
-            autoPlay
-            style={{
-              backgroundColor: "black",
-              width: "100px",
-              height: "100px"
-            }}
-          />
-          <Slider />
-        </Container>
-      </Card>
-    </Root>
-  );
-};
+const handleCanPlay = () => videoRef.current.play();
+
+
+<video
+  ref={videoRef}
+  onCanPlay={handleCanPlay}
+  autoPlay
+  style={{
+    backgroundColor: "black",
+    width: "100px",
+    height: "100px"
+  }}
+/>
+*/
 
 export default SliderScreen;

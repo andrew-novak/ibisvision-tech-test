@@ -1,18 +1,13 @@
 import React from "react";
 
-import Root from "../components/Root";
-import Container from "../components/Container";
-import Card from "../components/Card";
+import useBreakpoints from "../hooks/useBreakpoints";
+import CardTemplate from "../templates/CardTemplate";
 import Button from "../components/Button";
 
 const ResultScreen = () => (
-  <Root sideMargin="10px">
-    <Card title="Token: 2fdwfw" maxWidth="840px">
-      <Container maxWith={10}>
-        <Button>End Session</Button>
-      </Container>
-    </Card>
-  </Root>
+  <CardTemplate title="Token: 434vdf">
+    <Button>End Session</Button>
+  </CardTemplate>
 );
 
 export default ResultScreen;

@@ -1,0 +1,16 @@
+.slim-header {
+  background-color: #009c99;
+  height: 5px;
+  width: 100%;
+}
+
+.text-header {
+  align-items: center;
+  background: rgb(0, 144, 163);
+  background: linear-gradient(170deg, #0090a3, #00dc98);
+  color: white;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 100%;
+}

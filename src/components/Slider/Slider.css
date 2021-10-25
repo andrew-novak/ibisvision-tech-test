@@ -1,4 +1,8 @@
 .slider {
+  background-color: #976ec9;
+  border-radius: 20px;
+  height: 40px;
+  width: 100px;
 }
 
 .slider__dot {
