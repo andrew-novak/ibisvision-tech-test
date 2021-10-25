@@ -1,0 +1,14 @@
+.root {
+  align-items: start;
+  background-color: white;
+  bottom: 0;
+  display: flex;
+  left: 0;
+  justify-content: center;
+  overflow-x: hidden;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

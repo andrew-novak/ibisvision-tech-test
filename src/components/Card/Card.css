@@ -1,0 +1,33 @@
+.card {
+  background-color: rgba(#ffffff, 0);
+  box-shadow: rgba(100, 100, 111, 0.88) 0px 7px 50px 0px;
+  width: 100%;
+}
+
+.card__slim-header {
+  background-color: #009c99;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  height: 5px;
+  /*border-top: 5px solid #009c99;
+  */
+}
+
+.card__text-header {
+  align-items: center;
+  background: rgb(0, 144, 163);
+  background: linear-gradient(170deg, #0090a3, #00dc98);
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+  color: white;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+}
+
+.card__body {
+  align-items: center;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}

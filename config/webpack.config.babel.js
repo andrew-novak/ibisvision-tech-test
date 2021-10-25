@@ -1,5 +1,6 @@
 import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import { HotModuleReplacementPlugin } from "webpack";
 
 const isDev = process.env.NODE_ENV !== "production";
 
@@ -30,15 +31,21 @@ export default {
       {
         test: /\.html$/,
         use: "html-loader"
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource"
       }
     ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "../src/index.html")
-    })
+    }),
+    new HotModuleReplacementPlugin()
   ],
   devServer: {
+    hot: true,
     open: true,
     compress: true
   }

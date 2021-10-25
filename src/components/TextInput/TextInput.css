@@ -1,0 +1,29 @@
+.text-input__container {
+  border: 0;
+  border-radius: 4px;
+  /*box-shadow: rgb(96, 96, 96) 2px 2px 2px 2px;*/
+  box-shadow: rgba(100, 100, 111, 0.7) 0px 3px 10px -3px;
+  box-sizing: border-box;
+  height: 60px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.text-input__container:focus-within {
+  background-color: #e3f2f2;
+  box-shadow: none;
+}
+
+.text-input__icon {
+  max-height: 38px;
+  max-width: 38px;
+}
+
+input {
+  all: unset;
+}
+
+.text-input__input {
+}
