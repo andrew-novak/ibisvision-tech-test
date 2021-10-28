@@ -7,19 +7,20 @@ const Camera = ({ width }) => {
 
   const ref = createRef();
 
+  let stream = null;
+
   const getMedia = async () => {
     if (
       navigator.mediaDevices &&
       navigator.mediaDevices.getUserMedia &&
       ref.current
     ) {
-      let stream;
       try {
         stream = await navigator.mediaDevices.getUserMedia({
           video: true
         });
       } catch (err) {
-        /* error  handleing */
+        /* error  handling */
       }
       if (ref.current) {
         ref.current.srcObject = stream;
@@ -30,6 +31,16 @@ const Camera = ({ width }) => {
   useEffect(() => {
     getMedia();
     navigator.mediaDevices.ondevicechange = getMedia;
+    return async () => {
+      const tracks = await stream.getTracks();
+      console.log(tracks);
+      tracks.forEach(track => {
+        track.stop();
+        const attachedElements = track.detach();
+        attachedElements.forEach(element => element.remove());
+        ref.current.srcObject = null;
+      });
+    };
   }, []);
 
   return (

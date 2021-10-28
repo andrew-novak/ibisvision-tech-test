@@ -2,7 +2,15 @@ import React from "react";
 
 import "./RangeSlider.css";
 
-const RangeSlider = ({ passRef, onChange, value, fullWidth, height }) => (
+const RangeSlider = ({
+  passRef,
+  onChange,
+  value,
+  untouchable,
+  fullWidth,
+  height,
+  borderColor
+}) => (
   <input
     type="range"
     min="0"
@@ -10,10 +18,11 @@ const RangeSlider = ({ passRef, onChange, value, fullWidth, height }) => (
     ref={passRef}
     onChange={onChange}
     value={value}
-    className="slider"
+    className={untouchable ? "untouchable-slider" : "slider"}
     style={{
       ...(fullWidth ? { width: "100%" } : null),
-      ...(height ? { height } : null)
+      ...(height ? { height } : null),
+      ...(borderColor ? { borderColor } : null)
     }}
   />
 );

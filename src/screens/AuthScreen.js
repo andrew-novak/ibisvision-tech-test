@@ -11,6 +11,7 @@ import personIcon from "../assets/person-icon.png";
 import lockIcon from "../assets/lock-icon.png";
 
 const AuthRoot = ({}) => {
+  const breakpoints = useBreakpoints();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [generalHelper, setGeneralHelper] = useState("");
@@ -64,7 +65,7 @@ const AuthRoot = ({}) => {
       <Button fullWidth onClick={login}>
         LOGIN
       </Button>
-      <span style={{ height: "92px" }} />
+      <span style={{ height: breakpoints.down.sm ? "0px" : "92px" }} />
     </CardTemplate>
   );
 };

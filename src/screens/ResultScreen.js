@@ -66,7 +66,7 @@ const ResultScreen = () => {
           </Button>
         </div>
       )}
-      <span style={{ height: "130px" }} />
+      <span style={{ height: breakpoints.down.sm ? "0px" : "130px" }} />
     </CardTemplate>
   );
 };

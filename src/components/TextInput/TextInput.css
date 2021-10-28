@@ -44,6 +44,10 @@
   user-select: none;
 }
 
+.text-input__input {
+  width: 100%;
+}
+
 .text-input__helper-text {
   color: #d93025;
   font-size: 15px;

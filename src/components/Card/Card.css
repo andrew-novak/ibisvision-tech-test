@@ -1,6 +1,7 @@
 .card {
   background-color: rgba(#ffffff, 0);
-  box-shadow: rgba(100, 100, 111, 0.88) 0px 7px 50px 0px;
+  box-shadow: rgba(100, 100, 111, 0.88) 0px 7px 50px 0px,
+    rgba(0, 156, 153, 0.69) 0px 20px 40px -20px;
   width: 100%;
 }
 
@@ -9,8 +10,6 @@
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   height: 5px;
-  /*border-top: 5px solid #009c99;
-  */
 }
 
 .card__text-header {

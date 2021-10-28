@@ -11,13 +11,14 @@ import Camera from "../components/Camera";
 import Button from "../components/Button";
 
 const SliderScreen = () => {
+  const breakpoints = useBreakpoints();
   const {
     setScreen,
     token,
     setThinSliderDistance,
     setWideSliderDistance
   } = useContext(GeneralContext);
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(0);
   const thinSliderRef = createRef();
   const wideSliderRef = createRef();
 
@@ -35,6 +36,8 @@ const SliderScreen = () => {
     setScreen("result");
   };
 
+  const cameraWidth = breakpoints.down.md ? 170 : 310;
+
   return (
     <CardTemplate token={token} maxWidth="1055px">
       <Text>
@@ -49,20 +52,22 @@ const SliderScreen = () => {
       />
       <span style={{ height: "66px" }} />
       <div style={{ display: "flex", width: "100%" }}>
-        <Camera width={310} />
-        <span style={{ width: "62px" }} />
+        <Camera width={cameraWidth} />
+        <span style={{ width: breakpoints.down.sm ? "20px" : "62px" }} />
         <RangeSlider
           passRef={wideSliderRef}
           value={value}
+          untouchable={true}
           fullWidth
           height="342px"
+          borderColor="#fbb400"
         />
       </div>
       <span style={{ height: "60px" }} />
       <Button height="40px" width="218px" onClick={getResults}>
         NEXT
       </Button>
-      <span style={{ height: "80px" }} />
+      <span style={{ height: breakpoints.down.sm ? "0px" : "80px" }} />
     </CardTemplate>
   );
 };
