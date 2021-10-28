@@ -36,7 +36,9 @@ const SliderScreen = () => {
     setScreen("result");
   };
 
-  const cameraWidth = breakpoints.down.md ? 170 : 310;
+  const shrinkMultiplier = 0.5;
+  const cameraWidth = breakpoints.down.md ? 310 * shrinkMultiplier : 310;
+  const sliderHeight = breakpoints.down.md ? 342 * shrinkMultiplier : 342;
 
   return (
     <CardTemplate token={token} maxWidth="1055px">
@@ -59,7 +61,7 @@ const SliderScreen = () => {
           value={value}
           untouchable={true}
           fullWidth
-          height="342px"
+          height={`${sliderHeight}px`}
           borderColor="#fbb400"
         />
       </div>

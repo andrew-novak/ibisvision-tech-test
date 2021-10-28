@@ -48,13 +48,6 @@
   width: 100%;
 }
 
-.text-input__helper-text {
-  color: #d93025;
-  font-size: 15px;
-  margin-bottom: 4px;
-  margin-top: 4px;
-}
-
 input {
   all: unset;
 }

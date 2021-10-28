@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 
 import "./TextInput.css";
+import HelperText from "../HelperText";
 
 const TextInput = ({ fullWidth, icon, password, helperText, onChange }) => {
   const ref = React.createRef();
@@ -24,11 +25,7 @@ const TextInput = ({ fullWidth, icon, password, helperText, onChange }) => {
           onChange={onChange}
         />
       </div>
-      {helperText ? (
-        <p className="text-input__helper-text">{helperText}</p>
-      ) : (
-        <p className="text-input__helper-text">&nbsp;</p>
-      )}
+      <HelperText>{helperText}</HelperText>
     </div>
   );
 };

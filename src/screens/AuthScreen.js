@@ -6,6 +6,7 @@ import CardTemplate from "../templates/CardTemplate";
 import Container from "../components/Container";
 import TextInput from "../components/TextInput";
 import Button from "../components/Button";
+import HelperText from "../components/HelperText";
 import companyLogo from "../assets/company-logo.png";
 import personIcon from "../assets/person-icon.png";
 import lockIcon from "../assets/lock-icon.png";
@@ -33,9 +34,9 @@ const AuthRoot = ({}) => {
     const response = await fetch(url, options);
     const body = await response.json();
     if (!response.ok) {
-      if (body.username) setUsernameHelper(body.username);
-      if (body.password) setPasswordHelper(body.password);
-      if (body.non_field_errors) setGeneralHelper(body.non_field_errors);
+      setUsernameHelper(body.username ? body.username : null);
+      setPasswordHelper(body.password ? body.password : null);
+      setGeneralHelper(body.non_field_errors ? body.non_field_errors : null);
     } else {
       setToken(body.token);
       setScreen("slider");
@@ -46,7 +47,7 @@ const AuthRoot = ({}) => {
     <CardTemplate maxWidth="768px" innerMaxWidth="536px">
       <span style={{ height: "56px" }} />
       <img src={companyLogo} style={{ height: "132px", userSelect: "none" }} />
-      <span style={{ height: "51px" }} />
+      <span style={{ height: "53px" }} />
       <TextInput
         fullWidth
         icon={personIcon}
@@ -65,7 +66,8 @@ const AuthRoot = ({}) => {
       <Button fullWidth onClick={login}>
         LOGIN
       </Button>
-      <span style={{ height: breakpoints.down.sm ? "0px" : "92px" }} />
+      <HelperText>{generalHelper}</HelperText>
+      <span style={{ height: breakpoints.down.sm ? "0px" : "70px" }} />
     </CardTemplate>
   );
 };

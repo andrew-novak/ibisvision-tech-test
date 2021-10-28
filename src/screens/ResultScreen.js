@@ -23,8 +23,9 @@ const ResultScreen = () => {
     setScreen("auth");
   };
 
-  const cameraWidth = breakpoints.down.sm ? 400 : 510;
+  const cameraWidth = breakpoints.down.sm ? 350 : 510;
   const buttonShrink = 40;
+  const sizeMultiplier = breakpoints.down.md ? 0.5 : 1;
 
   return (
     <CardTemplate token={token} maxWidth="1418px" innerMaxWidth="1240px">
@@ -33,12 +34,14 @@ const ResultScreen = () => {
           alignItems: "center",
           display: "flex",
           flexDirection: breakpoints.down.md ? "column" : "row",
-          marginTop: "90px",
+          marginTop: `${90 * sizeMultiplier}px`,
           width: "100%"
         }}
       >
         <Camera width={cameraWidth} />
-        {breakpoints.down.md ? <span style={{ height: "94px" }} /> : null}
+        {breakpoints.down.md ? (
+          <span style={{ height: `${94 * sizeMultiplier}px` }} />
+        ) : null}
         <span style={{ flexShrink: 0, width: "74px" }} />
         <div
           style={{ display: "flex", flexDirection: "column", width: "100%" }}
@@ -47,14 +50,14 @@ const ResultScreen = () => {
             Distance from the beginning of the slider and the circle:{" "}
             {thinSliderDistance}px
           </Text>
-          <span style={{ height: "30px" }} />
+          <span style={{ height: `${30 * sizeMultiplier}px` }} />
           <Text contained>
             Distance from the beginning of the smaller container and the circle:{" "}
             {wideSliderDistance}px
           </Text>
         </div>
       </div>
-      <span style={{ height: "94px" }} />
+      <span style={{ height: `${94 * sizeMultiplier}px` }} />
       {breakpoints.down.md ? (
         <Button width={cameraWidth - buttonShrink} onClick={logout}>
           End Session
@@ -66,7 +69,11 @@ const ResultScreen = () => {
           </Button>
         </div>
       )}
-      <span style={{ height: breakpoints.down.sm ? "0px" : "130px" }} />
+      <span
+        style={{
+          height: breakpoints.down.sm ? "0px" : `${130 * sizeMultiplier}px`
+        }}
+      />
     </CardTemplate>
   );
 };
