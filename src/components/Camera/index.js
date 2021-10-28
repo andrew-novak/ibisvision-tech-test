@@ -33,7 +33,6 @@ const Camera = ({ width }) => {
     navigator.mediaDevices.ondevicechange = getMedia;
     return async () => {
       const tracks = await stream.getTracks();
-      console.log(tracks);
       tracks.forEach(track => {
         track.stop();
         const attachedElements = track.detach();
