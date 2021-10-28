@@ -8,7 +8,7 @@
   /*box-shadow: rgb(96, 96, 96) 2px 2px 2px 2px;*/
   box-shadow: rgba(100, 100, 111, 0.7) 0px 3px 10px -3px;
   box-sizing: border-box;
-  cursor: grab;
+  cursor: text;
   display: flex;
   height: 52px;
   padding-bottom: 10px;
