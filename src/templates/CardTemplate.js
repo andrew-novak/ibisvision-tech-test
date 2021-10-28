@@ -8,15 +8,22 @@ import Container from "../components/Container";
 import TextInput from "../components/TextInput";
 import Button from "../components/Button";
 
-const CardTemplate = ({ title, children }) => {
+const CardTemplate = ({ token, maxWidth, innerMaxWidth, children }) => {
   const breakpoints = useBreakpoints();
+
+  const title = token ? `Token: ${token}` : null;
+
+  // Provides padding between content and screen border on small screens, and minimal in-card padding on larger screens
+  const defaultInnerMaxWidth = `calc(100% - 20px)`;
 
   if (breakpoints.down.sm) {
     return (
       <Root>
         <Header title={title} />
-        <Container center maxWidth="calc(100% - 20px)">
-          {children}
+        <Container center maxWidth={defaultInnerMaxWidth}>
+          <Container center maxWidth={innerMaxWidth}>
+            {children}
+          </Container>
         </Container>
       </Root>
     );
@@ -24,10 +31,14 @@ const CardTemplate = ({ title, children }) => {
 
   return (
     <Root>
-      <Container center maxWidth="860px">
+      <Container center maxWidth={maxWidth}>
         <span style={{ height: "40px" }} />
-        <Container center maxWidth="calc(100% - 20px)">
-          <Card title={title}>{children}</Card>
+        <Container center maxWidth={defaultInnerMaxWidth}>
+          <Card title={title}>
+            <Container center maxWidth={innerMaxWidth}>
+              {children}
+            </Container>
+          </Card>
         </Container>
       </Container>
     </Root>

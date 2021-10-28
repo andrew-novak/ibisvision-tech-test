@@ -1,9 +1,26 @@
 .slider {
-  background-color: #976ec9;
-  border-radius: 20px;
+  align-items: center;
+  border: #009c99 solid 1px;
+  border-radius: 10px;
+  display: flex;
   height: 40px;
+  position: relative;
   width: 100px;
 }
 
+/*
+.slider:focus {
+  background-color: pink;
+  border: #fbb400 solid 2px;
+  border-color: #fbb400;
+}
+*/
+
 .slider__dot {
+  background-color: black;
+  border-radius: 100%;
+  cursor: pointer;
+  height: 30px;
+  position: absolute;
+  width: 30px;
 }

@@ -8,9 +8,21 @@
   align-items: center;
   background: rgb(0, 144, 163);
   background: linear-gradient(170deg, #0090a3, #00dc98);
-  color: white;
   display: flex;
-  height: 40px;
+  color: white;
+  font-size: 24px;
+  height: 68px;
   justify-content: center;
+  min-height: 68px;
+  text-align: center;
   width: 100%;
+  /* Wrap even with no whitespace */
+  white-space: -moz-pre-wrap !important; /* Mozilla, since 1999 */
+  white-space: -webkit-pre-wrap; /* Chrome & Safari */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  white-space: pre-wrap; /* CSS3 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
+  word-break: break-all;
+  white-space: normal;
 }

@@ -1,0 +1,19 @@
+.text__root {
+  font-size: 16px;
+  width: 100%;
+}
+
+.text__container {
+  align-items: center;
+  background-color: #a8b2b2;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.text__container p {
+  color: white;
+  font-size: 20px;
+}

@@ -21,7 +21,8 @@
   border-top-right-radius: 16px;
   color: white;
   display: flex;
-  height: 40px;
+  font-size: 24px;
+  height: 68px;
   justify-content: center;
 }
 
@@ -30,4 +31,6 @@
   background-color: white;
   display: flex;
   flex-direction: column;
+  padding-left: 30px;
+  padding-right: 30px;
 }

@@ -43,7 +43,7 @@ export default {
       template: path.join(__dirname, "../src/index.html")
     }),
     new HotModuleReplacementPlugin()
-  ],
+  ].filter(Boolean),
   devServer: {
     hot: true,
     open: true,
