@@ -17,7 +17,12 @@ const TextInput = ({ fullWidth, icon, password, helperText, onChange }) => {
             <img src={icon} draggable={false} className="text-input__icon" />
           </div>
         ) : null}
-        <input ref={ref} onChange={onChange} className="text-input__input" />
+        <input
+          ref={ref}
+          type={password ? "password" : null}
+          className="text-input__input"
+          onChange={onChange}
+        />
       </div>
       {helperText ? (
         <p className="text-input__helper-text">{helperText}</p>

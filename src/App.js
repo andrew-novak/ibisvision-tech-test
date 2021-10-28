@@ -7,12 +7,20 @@ import SliderScreen from "./screens/SliderScreen";
 import ResultScreen from "./screens/ResultScreen";
 
 const App = () => {
+  const [screen, setScreen] = useState("auth");
   const [token, setToken] = useState("");
-  const [screen, setSreen] = useState("auth");
+  const [thinSliderDistance, setThinSliderDistance] = useState(null);
+  const [wideSliderDistance, setWideSliderDistance] = useState(null);
 
   const contextValue = {
+    screen,
+    setScreen,
     token,
-    setToken
+    setToken,
+    thinSliderDistance,
+    setThinSliderDistance,
+    wideSliderDistance,
+    setWideSliderDistance
   };
 
   const content = () => {
@@ -23,11 +31,6 @@ const App = () => {
 
   return (
     <GeneralContext.Provider value={contextValue}>
-      <div style={{ position: "absolute", zIndex: 2 }}>
-        <button onClick={() => setSreen("auth")}>Auth</button>
-        <button onClick={() => setSreen("slider")}>Slider</button>
-        <button onClick={() => setSreen("result")}>Result</button>
-      </div>
       {content()}
     </GeneralContext.Provider>
   );

@@ -17,7 +17,7 @@ const AuthRoot = ({}) => {
   const [usernameHelper, setUsernameHelper] = useState("");
   const [passwordHelper, setPasswordHelper] = useState("");
 
-  const { setToken } = useContext(GeneralContext);
+  const { setScreen, setToken } = useContext(GeneralContext);
 
   const login = async () => {
     const url = "https://api.ibisvision.co.uk/api-token-auth/";
@@ -37,6 +37,7 @@ const AuthRoot = ({}) => {
       if (body.non_field_errors) setGeneralHelper(body.non_field_errors);
     } else {
       setToken(body.token);
+      setScreen("slider");
     }
   };
 
@@ -54,6 +55,7 @@ const AuthRoot = ({}) => {
       <span style={{ height: "8px" }} />
       <TextInput
         fullWidth
+        password
         icon={lockIcon}
         onChange={event => setPassword(event.target.value)}
         helperText={passwordHelper}
@@ -66,23 +68,5 @@ const AuthRoot = ({}) => {
     </CardTemplate>
   );
 };
-
-/*
-const AuthRoot = ({}) => (
-  <CardTemplate maxWidth="860px">
-    <Container center maxWidth="600px">
-      <span style={{ height: "60px" }} />
-      <img src={companyLogo} style={{ height: "151px", userSelect: "none" }} />
-      <span style={{ height: "55px" }} />
-      <TextInput fullWidth icon={personIcon} />
-      <span style={{ height: "36px" }} />
-      <TextInput fullWidth icon={lockIcon} />
-      <span style={{ height: "114px" }} />
-      <Button fullWidth>LOGIN</Button>
-      <span style={{ height: "103px" }} />
-    </Container>
-  </CardTemplate>
-);
-*/
 
 export default AuthRoot;
