@@ -1,53 +1,80 @@
-import React, { createRef, useEffect } from "react";
+import React, { createRef, useState, useEffect } from "react";
 
 import "./Camera.css";
 
 const Camera = ({ width }) => {
+  const videoRef = createRef();
+  const [stream, setStream] = useState(null);
+
   const height = width / 1.5;
 
-  const ref = createRef();
+  const handleSuccess = stream => {
+    // get no. of cameras
+    return stream;
+  };
 
-  let stream = null;
+  const handleError = error => {
+    console.error(error);
+  };
 
-  const getMedia = async () => {
-    if (
-      navigator.mediaDevices &&
-      navigator.mediaDevices.getUserMedia &&
-      ref.current
-    ) {
-      try {
-        stream = await navigator.mediaDevices.getUserMedia({
-          video: true
+  const initCameraStream = (stream, setStream) => {
+    if (stream) {
+      stream.getTracks().forEach(track => {
+        track.stop();
+      });
+    }
+    const constrains = { video: true };
+    if (navigator.mediaDevices.getUserMedia) {
+      navigator.mediaDevices
+        .getUserMedia(constrains)
+        .then(stream => {
+          setStream(handleSuccess(stream));
+        })
+        .catch(err => {
+          handleError(err);
         });
-      } catch (err) {
-        /* error  handling */
-      }
-      if (ref.current) {
-        ref.current.srcObject = stream;
+    } else {
+      const getWebcam =
+        navigator.getUserMedia ||
+        navigator.webkitGetUserMedia ||
+        navigator.mozGetUserMedia ||
+        navigator.msGetUserMedia;
+      if (getWebcam) {
+        getWebcam(
+          constrains,
+          stream => setStream(handleSuccess(stream)),
+          err => handleError(err)
+        );
+      } else {
+        // not supported
       }
     }
   };
 
+  useEffect(() => initCameraStream(stream, setStream), []);
+
   useEffect(() => {
-    getMedia();
-    navigator.mediaDevices.ondevicechange = getMedia;
-    return async () => {
-      const tracks = await stream.getTracks();
-      tracks.forEach(track => {
-        track.stop();
-        const attachedElements = track.detach();
-        attachedElements.forEach(element => element.remove());
-        ref.current.srcObject = null;
-      });
+    if (stream && videoRef && videoRef.current) {
+      videoRef.current.srcObject = stream;
+    }
+    return () => {
+      if (stream) {
+        stream.getrTracks().forEach(track => {
+          track.stop();
+        });
+      }
     };
-  }, []);
+  }, [stream]);
 
   return (
     <video
+      src={stream}
       autoPlay={true}
-      ref={ref}
+      ref={videoRef}
       className="camera"
       style={{ height, width }}
+      height={height}
+      width={width}
     />
   );
 };
