@@ -1,4 +1,9 @@
-import React, { createRef, useState, useEffect } from "react";
+import React, {
+  createRef,
+  useState,
+  useEffect,
+  useImperativeHandle
+} from "react";
 
 import "./Camera.css";
 
@@ -7,11 +12,6 @@ const Camera = ({ width }) => {
   const [stream, setStream] = useState(null);
 
   const height = width / 1.5;
-
-  const handleSuccess = stream => {
-    // get no. of cameras
-    return stream;
-  };
 
   const handleError = error => {
     console.error(error);
@@ -28,7 +28,7 @@ const Camera = ({ width }) => {
       navigator.mediaDevices
         .getUserMedia(constrains)
         .then(stream => {
-          setStream(handleSuccess(stream));
+          setStream(stream);
         })
         .catch(err => {
           handleError(err);
@@ -42,11 +42,11 @@ const Camera = ({ width }) => {
       if (getWebcam) {
         getWebcam(
           constrains,
-          stream => setStream(handleSuccess(stream)),
+          stream => setStream(stream),
           err => handleError(err)
         );
       } else {
-        // not supported
+        console.error("Camera not supported");
       }
     }
   };
@@ -56,6 +56,9 @@ const Camera = ({ width }) => {
   useEffect(() => {
     if (stream && videoRef && videoRef.current) {
       videoRef.current.srcObject = stream;
+      videoRef.current.onloadedmetadata = e => {
+        videoRef.current.play();
+      };
     }
     return () => {
       if (stream) {
